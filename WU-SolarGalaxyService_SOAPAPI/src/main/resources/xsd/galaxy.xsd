@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://www.wu.com/solargalaxyservice/galaxy"
+	xmlns:tns="http://www.wu.com/solargalaxyservice/galaxy"
+	elementFormDefault="qualified">
+
+	<xsd:element name="GetGreetRequest" type="xsd:string" />
+	<xsd:element name="GetGreetResponse" type="xsd:string" />
+
+	<xsd:element name="AddMobileRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="product_mobile_id" type="xsd:long" />
+				<xsd:element name="productName" type="xsd:string" />
+				<xsd:element name="productColor" type="xsd:string" />
+				<xsd:element name="productPrice" type="xsd:double" />
+				<xsd:element name="productVendorName" type="xsd:string" />
+				<xsd:element name="productInStock" type="xsd:boolean" />
+				<xsd:element name="mobileFeature"
+					type="tns:MobileFeature" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:complexType name="MobileFeature">
+		<xsd:sequence>
+		    <xsd:element name="featureId" type="xsd:long" />
+			<xsd:element name="ram" type="xsd:long" />
+			<xsd:element name="rom" type="xsd:long" />
+			<xsd:element name="extendableRom" type="xsd:long" />
+			<xsd:element name="displaySize" type="xsd:double" />
+			<xsd:element name="frontEndCamera" type="xsd:int" />
+			<xsd:element name="backEndCamera" type="xsd:int" />
+			<xsd:element name="batteryPower" type="xsd:long" />
+			<xsd:element name="processor" type="xsd:string" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="AddMobileResponse" type="xsd:boolean" />
+
+	<xsd:element name="GetMobileByNameOrWithoutNameRequest"
+		type="xsd:string" />
+
+	<xsd:complexType name="MobileList">
+		<xsd:sequence>
+			<xsd:element name="product_mobile_id" type="xsd:long" />
+			<xsd:element name="productName" type="xsd:string" />
+			<xsd:element name="productColor" type="xsd:string" />
+			<xsd:element name="productPrice" type="xsd:double" />
+			<xsd:element name="productVendorName" type="xsd:string" />
+			<xsd:element name="productInStock" type="xsd:boolean" />
+		</xsd:sequence>
+	</xsd:complexType>
+
+	<xsd:element name="GetMobileByNameOrWithoutNameResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="mobileList" type="tns:MobileList"
+					maxOccurs="unbounded" />
+				<xsd:element name="mobileFeature"
+					type="tns:MobileFeature" maxOccurs="unbounded" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="GetMobileRequest" type="xsd:string" />
+
+	<xsd:element name="GetMobileByIdRequest" type="xsd:long" />
+
+	<xsd:element name="GetMobileByIdResponse">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="product_mobile_id" type="xsd:long" />
+				<xsd:element name="productName" type="xsd:string" />
+				<xsd:element name="productColor" type="xsd:string" />
+				<xsd:element name="productPrice" type="xsd:double" />
+				<xsd:element name="productVendorName" type="xsd:string" />
+				<xsd:element name="productInStock" type="xsd:boolean" />
+				<xsd:element name="mobileFeature" type="tns:MobileFeature" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="UpdateMobileByIdRequest">
+		<xsd:complexType>
+			<xsd:sequence>
+				<xsd:element name="product_mobile_id" type="xsd:long" />
+				<xsd:element name="productName" type="xsd:string" />
+				<xsd:element name="productColor" type="xsd:string" />
+				<xsd:element name="productPrice" type="xsd:double" />
+				<xsd:element name="productVendorName" type="xsd:string" />
+				<xsd:element name="productInStock" type="xsd:boolean" />
+			</xsd:sequence>
+		</xsd:complexType>
+	</xsd:element>
+
+	<xsd:element name="UpdateMobileByIdResponse"
+		type="xsd:boolean" />
+
+	<xsd:element name="RemoveMobileByIdRequest" type="xsd:long" />
+
+	<xsd:element name="RemoveMobileByIdResponse"
+		type="xsd:boolean" />
+
+</xsd:schema>
